@@ -1,0 +1,80 @@
+  <div class="row background ">
+    <div class="offset-sm-4 col-sm-4">
+      <div class="card text-blank border-0">
+        <div class="card-body">
+          <div class="card-title text-center">
+            <h5>SignUp using your email</h5>
+          </div>
+          <div class="card-text">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">      
+
+            <div class="form-group">
+              <input type="email" placeholder="Enter email"
+              class="form-control"
+              formControlName="email">
+            </div>
+
+            <div class="text-danger" *ngIf="!myForm.controls['email'].valid && 
+            myForm.controls['email'].touched ">
+            <small>A valid email is required</small>
+            </div>
+
+
+            <div class="form-group mt-3">
+              <input type="password" placeholder="Enter password"
+              class="form-control"
+              formControlName="password">
+            </div>
+            <div class="text-danger"*ngIf="!myForm.controls['password'].valid && 
+            myForm.controls['password'].touched">
+              <small>Password should be atleast 8 characters long.</small>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="password" placeholder="Enter password"
+                class="form-control"
+                formControlName="confirmpassword">
+              </div>
+            <div class="text-danger"*ngIf="!myForm.controls['confirmpassword'].valid && 
+            myForm.controls['confirmpassword'].touched">
+             <small>ConfirmPassword not matched.</small>
+            </div>
+
+            <div class="text-center mt-3" > 
+              <button class="btn btn-block btn-primary" 
+              [disabled]="!myForm.valid"type="submit"(click)="patchPat()"
+              >Submit</button>
+            </div>         
+         
+        
+         <h3 class="text-danger" style="text-align: center;">{{message}}</h3> 
+          <div class="container">
+            <table>
+              <tr class="row">
+                <td class="col-12">
+                  <h5>Pattern</h5>
+                    <div id="patternContainer" #patternContainer  ></div>
+                  
+                    <input  name="dotpattern"  formControlName="patterncode" type="hidden"
+                    id="patterncode"> 
+                    <!-- <input #patterncode name="dotpattern"  [(ngModel)]="patterncode.value" [ngModelOptions]="{standalone:true}" type="text"
+                    id="patterncode" (input)="val(patterncode.value)">  -->
+                  
+                    <!-- <span>Value: {{ patterncode.value}}</span> -->
+                </td>
+                <h5 >Confirm Pattern</h5>
+                <td class="col-12"> <div  id="confirmPatternContainer"></div>
+                  <input  name="dotpatternconfirm"  formControlName="confirmpattern" type="hidden"
+                  id="patterncodeConfirm"> 
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form> 
+        
+        </div>  
+        </div>         
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,61 @@
+<p>pat works!</p>
+
+<div class="row background ">
+  <div class="offset-sm-4 col-sm-4">
+    <div class="card text-blank border-0">
+      <div class="card-body">
+        <div class="card-title text-center">
+          <h5>Login using your email</h5>
+        </div>
+        <div class="card-text">
+        <form [formGroup]="myForm" (ngSubmit)="loginProcess()">      
+
+          <div class="form-group">
+            <input type="email" placeholder="Enter email"
+            class="form-control"
+            formControlName="email">
+          </div>
+
+          <div class="alert alert-danger" *ngIf="!myForm.controls['email'].valid && 
+          myForm.controls['email'].touched">
+            A valid email is required
+          </div>
+
+
+          <div class="form-group mt-3">
+            <input type="password" placeholder="Enter password"
+            class="form-control"
+            formControlName="password">
+          </div>
+
+
+          <div class="alert alert-danger"*ngIf="!myForm.controls['password'].valid && 
+          myForm.controls['password'].touched">
+            Password should be atleast 8 characters long.
+          </div>
+
+          <div class="text-center mt-3" > 
+            <button class="btn btn-block btn-warning" 
+            [disabled]="!myForm.valid"type="submit" (click)="patchPat()"
+            >Submit</button>
+          </div>     
+          
+          <h5>Pattern</h5>
+          <table><tr><td>
+          <div id="patternContainer" #patternContainer  ></div>
+        
+          <input  name="dotpattern"  formControlName="patterncode" type="hidden"
+          id="patterncode"> 
+          </td></tr></table>
+        </form>    
+        <!-- <div class="text-center mt-3">
+          <button class="btn btn-link" routerLink="/home">Dont have an 
+          account? Create One</button>
+        </div> -->
+        {{message}}
+      </div>  
+      </div>         
+    </div>
+  </div>
+</div>
+
